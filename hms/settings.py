@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my applications
     'hostel',
+    'booking',
     'corsheaders',
     'rest_framework',
 ]
