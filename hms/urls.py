@@ -3,7 +3,7 @@ from django.urls import path, include
 from rest_framework import routers
 from hostel import views as hostel_views
 from booking import views as booking_views
-from users.views import CustomUserViewSet
+from users.views import CustomUserViewSet, login_user
 
 
 
@@ -16,5 +16,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/login/', login_user, name='login_user'),
 
 ]
