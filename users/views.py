@@ -26,13 +26,34 @@ def login_user(request):
         else:
             return Response({'error': 'Invalid login credentials'}, status=status.HTTP_401_UNAUTHORIZED)
     
+# @api_view(['POST'])
+# def register_user(request):
+#     if request.method == 'POST':
+#         serializer = CustomUserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             user = serializer.save()
+#             login(request, user)  # Log the user in after registration
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+# @api_view(['POST'])
+# def register_user(request):
+#     if request.method == 'POST':
+#         serializer = CustomUserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             user = serializer.save()
+#             # Remove the automatic login after registration
+#             # login(request, user)
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 @api_view(['POST'])
 def register_user(request):
     if request.method == 'POST':
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            login(request, user)  # Log the user in after registration
+            # Remove the automatic login after registration
+            # login(request, user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
